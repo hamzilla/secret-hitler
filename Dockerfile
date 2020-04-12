@@ -27,5 +27,5 @@ ENV MONGO_DB=192.168.1.87
 COPY start.sh .
 
 RUN chmod 755 /usr/src/app/start.sh
-EXPOSE 8080
+EXPOSE 8082
 CMD ["/usr/src/app/start.sh"]
