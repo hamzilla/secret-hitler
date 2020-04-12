@@ -22,10 +22,13 @@ COPY secret-hitler/ .
 RUN yarn
 RUN yum install nc -y
 
-# start.sh uses MONGO_DB
+# Required env variables
 ENV MONGO_DB=192.168.1.87
+ENV SECRETSESSIONKEY=syfqsxyjbhdje
+ENV PORT=8080
+
 COPY start.sh .
 
 RUN chmod 755 /usr/src/app/start.sh
-EXPOSE 8082
+EXPOSE $PORT
 CMD ["/usr/src/app/start.sh"]
