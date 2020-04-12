@@ -16,7 +16,8 @@ const { expandAndSimplify } = require('./routes/socket/ip-obf');
 
 let store;
 
-const mongoDB = process.env['MONGO_DB']
+//const mongoDB = process.env['MONGO_DB']
+const mongoDB = process.env.MONGO_DB
 
 if (process.env.NODE_ENV !== 'production') {
 	const MongoDBStore = require('connect-mongodb-session')(session);
@@ -69,8 +70,9 @@ app.use(express.static(`${__dirname}/public`, { maxAge: 86400000 * 28 }));
 
 const sessionSettings = {
 	secret: process.env.SECRETSESSIONKEY,
+	//secret: process.env['SECRETSESSIONKEY'],
 	cookie: {
-		maxAge: 1000 * 60 * 60 * 24 * 28 // 4 weeks
+		maxAge: 1000 * 1000 * 60 * 60 * 24 * 28 // 4 weeks
 	},
 	store,
 	resave: true,
